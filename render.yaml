@@ -5,10 +5,9 @@ services:
     buildCommand: |
       chmod +x build.sh
       ./build.sh
-      pip install -r requirements.txt
-    startCommand: gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:10000
+    startCommand: gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.16
-      - key: TESSDATA_PREFIX
-        value: "/usr/share/tesseract-ocr/4.00/tessdata"
+      - key: TESSERACT_CMD
+        value: /usr/bin/tesseract
