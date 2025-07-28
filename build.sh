@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit
 
-apt-get update
-apt-get install -y \
-    tesseract-ocr \
-    libtesseract-dev \
-    libleptonica-dev \
-    poppler-utils
+echo "Installing Python dependencies..."
+python -m pip install --user -r requirements.txt
+
+echo "Skipping system package installs (Render restrictions)"
+echo "Tesseract path: $(which tesseract)"
